@@ -1,5 +1,7 @@
 name: Deploy Python project to function app
 
+on:
+  [push]
 
 env:
   AZURE_FUNCTIONAPP_NAME: rohini-testingfunctionapp # set this to your application's name
