@@ -1,7 +1,5 @@
 name: Deploy Python project to function app
 
-on:
-  [push]
 
 env:
   AZURE_FUNCTIONAPP_NAME: rohini-testingfunctionapp # set this to your application's name
@@ -23,7 +21,7 @@ jobs:
     - name: 'Resolve Project Dependencies Using Pip'
       shell: bash
       run: |
-        pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+        pushd '$GITHUB_WORKSPACE/${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         python -m pip install --upgrade pip
         pip install -r requirements.txt --target=".python_packages/lib/site-packages"
         popd
