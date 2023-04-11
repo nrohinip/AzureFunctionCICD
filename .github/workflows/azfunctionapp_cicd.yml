@@ -12,12 +12,12 @@ on:
       GIT_FunctionApp_Name:
         description: 'Provide the Function App Name'
         required: true
-        default: 'functionappsrs'
+        default: 'rohini-testingfunctionapp'
         
       GIT_FunctionApp_URL:
         description: 'Provide the Function App URL'
         required: true
-        default: 'https://functionappsrs.azurewebsites.net'
+        default: 'https://rohini-testingfunctionapp.azurewebsites.net'
         
        # This is the path of your Function app in Git.
       GIT_FunctionApp_PATH:
@@ -69,10 +69,3 @@ jobs:
           name: python-app
           path: ${{ github.workspace }}/${{ github.event.inputs.GIT_FunctionApp_PATH }}
 
-      - name: 'Deploy to Azure Functions'
-        uses: Azure/functions-action@v1
-        id: deploy-to-function
-        with:
-          app-name: ${{ github.event.inputs.GIT_FunctionApp_Name }}
-          package: ${{ github.workspace }}/${{ github.event.inputs.GIT_FunctionApp_PATH }}
-          publish-profile: ${{ secrets.FUNCTIONAPP_PUBLISH }}
